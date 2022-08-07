@@ -2,7 +2,7 @@ import { styled } from '@mui/material';
 
 export const Body = styled('div', {
   shouldForwardProp: (prop) => prop !== 'active',
-})<{active: boolean}>`
+})<{ active: boolean }>`
   display: block;
   width: 50px;
   height: 50px;

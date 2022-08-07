@@ -3,7 +3,7 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": ["plugin:react/recommended", "airbnb", "plugin:import/recommended", "plugin:import/typescript"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -13,6 +13,9 @@
     "sourceType": "module"
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
@@ -22,7 +25,7 @@
       }
     }
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "import", "prettier"],
   "rules": {
     // General
     "react/react-in-jsx-scope": "off",

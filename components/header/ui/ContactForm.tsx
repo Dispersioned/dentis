@@ -4,14 +4,14 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { SubmitBtn } from '../styles/Header';
 
 type ContactFormProps = {
-  open: boolean,
-  handleClose: () => void,
+  open: boolean;
+  handleClose: () => void;
 };
 
 type FormValues = {
-    name: string
-    phone: string
-  }
+  name: string;
+  phone: string;
+};
 
 export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
   const {

@@ -23,7 +23,7 @@ export const Content = styled('div')`
 
 export const MobileNavigation = styled('div', {
   shouldForwardProp: (prop) => prop !== 'active',
-}) < { active: boolean } >`
+})<{ active: boolean }>`
   position: fixed;
   left: 0;
   top: ${(props) => (props.active ? '0' : '-100%')};

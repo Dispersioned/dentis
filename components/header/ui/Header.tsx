@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+
 import { useIsMobile } from '../../../hooks/useWindowWidth';
 import { Buttons, ContactBtn, Content, MobileNavigation, Wrapper } from '../styles/Header';
 import { Burger } from './Burger';
