@@ -35,7 +35,7 @@ export const Header = () => {
                   +7 (938) 505 84 23
                 </ContactBtn>
                 <ContactBtn onClick={() => setIsFormOpen(true)} variant="contained">
-                  ЗаписатьсяNOT
+                  Записаться
                 </ContactBtn>
               </Buttons>
             </>
@@ -46,7 +46,7 @@ export const Header = () => {
                 <Navigation />
                 <Buttons>
                   <ContactBtn onClick={() => setIsFormOpen(true)} variant="contained">
-                    Записатьсяtext
+                    Записаться
                   </ContactBtn>
                   <ContactBtn variant="text" href="tel:+79385058423">
                     +7 (938) 505 84 23
