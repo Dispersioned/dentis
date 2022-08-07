@@ -1,4 +1,5 @@
 import React from 'react';
+import { Footer } from '../footer';
 import { Header } from '../header';
 
 type LayoutProps = React.PropsWithChildren;
@@ -13,5 +14,6 @@ export const Layout = ({ children }: LayoutProps) => (
     <Footer /> */}
     <Header />
     {children}
+    <Footer />
   </div>
 );
