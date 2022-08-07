@@ -34,6 +34,7 @@
     "no-restricted-syntax": "off",
     "no-duplicate-imports": "error",
     "import/no-unresolved": "error",
+    "no-confusing-arrow": "off",
     // Warn instead error for fast debugging
     "no-console": "warn",
     // Breaks custom wrappers for UIKits (<CustomBtn ...props />)
@@ -60,6 +61,11 @@
     "no-unused-vars": "warn",
     // Breaks some features on Next.js & MUI
     "react/jsx-props-no-spreading": "warn",
+    // Sometimes works bad with prettier printWidth
+    "implicit-arrow-linebreak": "off",
+
+    // Can't be resolved with eslint-config-airbnb
+    "react/jsx-curly-newline": "off",
 
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "import/extensions": [

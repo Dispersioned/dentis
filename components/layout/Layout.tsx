@@ -1,4 +1,5 @@
 import React from 'react';
+import { Header } from '../header';
 
 type LayoutProps = React.PropsWithChildren;
 
@@ -10,6 +11,7 @@ export const Layout = ({ children }: LayoutProps) => (
       {children}
     </Container>
     <Footer /> */}
+    <Header />
     {children}
   </div>
 );
