@@ -137,6 +137,36 @@ export interface IInternalServicePage extends Entry<IInternalServicePageFields> 
   };
 }
 
+export interface ILicensePageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Содержание */
+  content: Document;
+
+  /** Фотографии */
+  images?: Asset[] | undefined;
+}
+
+/** Страница */
+
+export interface ILicensePage extends Entry<ILicensePageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'licensePage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IPaymentConditionsPageFields {
   /** Заголовок */
   title: string;
@@ -197,6 +227,7 @@ export type CONTENT_TYPE =
   | 'freeHelpPage'
   | 'inspectionPage'
   | 'internalServicePage'
+  | 'licensePage'
   | 'paymentConditionsPage'
   | 'warrantyPage';
 
