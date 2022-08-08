@@ -5,7 +5,7 @@ import { PageTitle } from '../../components/page-title';
 import { ROUTES } from '../../config';
 import { MenuItem, MenuLayout } from '../../styles/info/styles';
 
-const Home: NextPage = () => {
+const Page: NextPage = () => {
   const navRoute = ROUTES.find((route) => route.text === 'Клиентам');
   return (
     <div>
@@ -21,4 +21,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Page;

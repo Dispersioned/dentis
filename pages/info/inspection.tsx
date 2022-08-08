@@ -5,11 +5,11 @@ import { IInspectionPage } from '../../contentful';
 import { client } from '../../contentful/client';
 import { renderRichText } from '../../utility/renderRichText';
 
-type InspectionPageProps = {
+type Props = {
   data: IInspectionPage;
 };
 
-const InspectionPage: NextPage<InspectionPageProps> = ({ data }: InspectionPageProps) => {
+const Page: NextPage<Props> = ({ data }: Props) => {
   return (
     <div>
       <PageTitle text={data.fields.title} />
@@ -28,4 +28,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default InspectionPage;
+export default Page;
