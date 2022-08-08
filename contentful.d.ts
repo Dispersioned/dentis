@@ -29,7 +29,34 @@ export interface IInspectionPage extends Entry<IInspectionPageFields> {
   };
 }
 
-export type CONTENT_TYPE = 'inspectionPage';
+export interface IPaymentConditionsPageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Содержание */
+  content: Document;
+}
+
+/** Страница */
+
+export interface IPaymentConditionsPage extends Entry<IPaymentConditionsPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'paymentConditionsPage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export type CONTENT_TYPE = 'inspectionPage' | 'paymentConditionsPage';
 
 export type LOCALE_CODE = 'en-US';
 

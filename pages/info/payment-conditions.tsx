@@ -19,7 +19,7 @@ const Page: NextPage<Props> = ({ data }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = await client.getEntries<IInspectionPage>({ content_type: 'inspectionPage' });
+  const page = await client.getEntries<IInspectionPage>({ content_type: 'paymentConditionsPage' });
 
   const [data] = page.items;
   return {
