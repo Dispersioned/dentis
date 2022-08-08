@@ -29,6 +29,33 @@ export interface ICodeOfServicePage extends Entry<ICodeOfServicePageFields> {
   };
 }
 
+export interface IDmsPageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Содержание */
+  content: Document;
+}
+
+/** Страница */
+
+export interface IDmsPage extends Entry<IDmsPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'dmsPage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IFreeHelpPageFields {
   /** Заголовок */
   title: string;
@@ -166,6 +193,7 @@ export interface IWarrantyPage extends Entry<IWarrantyPageFields> {
 
 export type CONTENT_TYPE =
   | 'codeOfServicePage'
+  | 'dmsPage'
   | 'freeHelpPage'
   | 'inspectionPage'
   | 'internalServicePage'
