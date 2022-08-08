@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import { useIsMobile } from '../../../hooks/useWindowWidth';
+import { useWindowWidth } from '../../../hooks/useWindowWidth';
 import { Buttons, ContactBtn, Content, MobileNavigation, Wrapper } from '../styles/Header';
 import { Burger } from './Burger';
 import { ContactForm } from './ContactForm';
@@ -15,7 +15,7 @@ export const Header = () => {
   }, [isActive]);
 
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const isMobile = useIsMobile();
+  const width = useWindowWidth();
 
   return (
     <Wrapper position="sticky">
@@ -27,7 +27,7 @@ export const Header = () => {
               <Image src="/logo.svg" style={{ zIndex: 1000 }} width={180} height={55} />
             </a>
           </Link>
-          {!isMobile ? (
+          {width && width > 1400 ? (
             <>
               <Navigation />
               <Buttons>
