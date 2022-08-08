@@ -2,30 +2,6 @@
 import { Document } from '@contentful/rich-text-types';
 import { Asset, Entry } from 'contentful';
 
-export interface IIndexPageFields {
-  /** Заголовок */
-  title: string;
-}
-
-/** Главная страница */
-
-export interface IIndexPage extends Entry<IIndexPageFields> {
-  sys: {
-    id: string;
-    type: string;
-    createdAt: string;
-    updatedAt: string;
-    locale: string;
-    contentType: {
-      sys: {
-        id: 'indexPage';
-        linkType: 'ContentType';
-        type: 'Link';
-      };
-    };
-  };
-}
-
 export interface IInspectionPageFields {
   /** Заголовок */
   title: string;
@@ -34,7 +10,7 @@ export interface IInspectionPageFields {
   content: Document;
 }
 
-/** Страница Органы контроля */
+/** Страница */
 
 export interface IInspectionPage extends Entry<IInspectionPageFields> {
   sys: {
@@ -53,7 +29,7 @@ export interface IInspectionPage extends Entry<IInspectionPageFields> {
   };
 }
 
-export type CONTENT_TYPE = 'indexPage' | 'inspectionPage';
+export type CONTENT_TYPE = 'inspectionPage';
 
 export type LOCALE_CODE = 'en-US';
 
