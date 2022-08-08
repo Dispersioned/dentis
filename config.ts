@@ -1,4 +1,10 @@
-export const ROUTES = [
+export type Route = {
+  text: string;
+  to: string;
+  subroutes?: Route[];
+};
+
+export const ROUTES: Route[] = [
   { text: 'О нас', to: 'about-us' },
   { text: 'Врачи', to: 'specialists' },
   { text: 'Услуги', to: 'services' },
