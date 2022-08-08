@@ -1,6 +1,6 @@
 import { Options, documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, Document } from '@contentful/rich-text-types';
-import { Typography } from '@mui/material';
+import { Table, TableBody, TableCell, TableRow, Typography } from '@mui/material';
 
 type RichText = (string | false | JSX.Element)[];
 
@@ -38,6 +38,14 @@ export const renderRichText = (data: Document) => {
           {children}
         </Typography>
       ),
+      [BLOCKS.TABLE]: (node, children) => (
+        <Table>
+          <TableBody>{children}</TableBody>
+        </Table>
+      ),
+      [BLOCKS.TABLE_ROW]: (node, children) => <TableRow>{children}</TableRow>,
+      [BLOCKS.TABLE_HEADER_CELL]: (node, children) => <TableCell>{children}</TableCell>,
+      [BLOCKS.TABLE_CELL]: (node, children) => <TableCell>{children}</TableCell>,
     },
     renderText: (text) => {
       return text.split('\n').reduce((children: RichText, textSegment: string, index: number) => {
