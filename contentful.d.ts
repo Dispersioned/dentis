@@ -2,6 +2,33 @@
 import { Document } from '@contentful/rich-text-types';
 import { Asset, Entry } from 'contentful';
 
+export interface ICodeOfServicePageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Содержание */
+  content: Document;
+}
+
+/** Страница */
+
+export interface ICodeOfServicePage extends Entry<ICodeOfServicePageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'codeOfServicePage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IInspectionPageFields {
   /** Заголовок */
   title: string;
@@ -56,7 +83,7 @@ export interface IPaymentConditionsPage extends Entry<IPaymentConditionsPageFiel
   };
 }
 
-export type CONTENT_TYPE = 'inspectionPage' | 'paymentConditionsPage';
+export type CONTENT_TYPE = 'codeOfServicePage' | 'inspectionPage' | 'paymentConditionsPage';
 
 export type LOCALE_CODE = 'en-US';
 
