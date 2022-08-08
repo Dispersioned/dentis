@@ -16,7 +16,7 @@ export const Navigation = () => {
             <Link href={`/${data.to}`}>
               <MUILink
                 style={{ cursor: 'pointer' }}
-                className={router.asPath.slice(1) === data.to ? `${s.navlink} ${s.active}` : s.navlink}
+                className={router.asPath.includes(data.to) ? `${s.navlink} ${s.active}` : s.navlink}
                 fontFamily="Nunito, sans-serif"
               >
                 {data.text}
