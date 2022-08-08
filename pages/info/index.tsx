@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { PageTitle } from '../../components/page-title';
 import { ROUTES } from '../../config';
-import { MenuItem, MenuLayout } from './styles';
+import { MenuItem, MenuLayout } from '../../styles/info/styles';
 
 const Home: NextPage = () => {
   const navRoute = ROUTES.find((route) => route.text === 'Клиентам');
