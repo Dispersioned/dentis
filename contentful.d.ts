@@ -110,7 +110,39 @@ export interface IPaymentConditionsPage extends Entry<IPaymentConditionsPageFiel
   };
 }
 
-export type CONTENT_TYPE = 'codeOfServicePage' | 'freeHelpPage' | 'inspectionPage' | 'paymentConditionsPage';
+export interface IWarrantyPageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Содержание */
+  content: Document;
+}
+
+/** Страница */
+
+export interface IWarrantyPage extends Entry<IWarrantyPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'warrantyPage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
+export type CONTENT_TYPE =
+  | 'codeOfServicePage'
+  | 'freeHelpPage'
+  | 'inspectionPage'
+  | 'paymentConditionsPage'
+  | 'warrantyPage';
 
 export type LOCALE_CODE = 'en-US';
 
