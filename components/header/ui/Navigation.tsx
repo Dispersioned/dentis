@@ -1,13 +1,20 @@
 import { Link as MUILink } from '@mui/material';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import React from 'react';
 
 import { ROUTES } from '../../../config';
 import { NavLinks } from '../styles/Navigation';
 import s from '../styles/Navigation.module.css';
 
-export const Navigation = () => {
+type NavigationProps = {
+  onClose: () => void;
+};
+
+export const Navigation = ({ onClose }: NavigationProps) => {
   const router = useRouter();
+  const isActiveLink = (link: string) => router.asPath.includes(link);
+
   return (
     <nav>
       <NavLinks>
@@ -15,8 +22,11 @@ export const Navigation = () => {
           <li key={data.to}>
             <Link href={`/${data.to}`}>
               <MUILink
+                onClick={() => {
+                  if (!isActiveLink(data.to)) onClose();
+                }}
                 style={{ cursor: 'pointer' }}
-                className={router.asPath.includes(data.to) ? `${s.navlink} ${s.active}` : s.navlink}
+                className={isActiveLink(data.to) ? `${s.navlink} ${s.active}` : s.navlink}
                 fontFamily="Nunito, sans-serif"
               >
                 {data.text}
