@@ -83,6 +83,33 @@ export interface IInspectionPage extends Entry<IInspectionPageFields> {
   };
 }
 
+export interface IInternalServicePageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Содержание */
+  content: Document;
+}
+
+/** Страница */
+
+export interface IInternalServicePage extends Entry<IInternalServicePageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'internalServicePage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IPaymentConditionsPageFields {
   /** Заголовок */
   title: string;
@@ -141,6 +168,7 @@ export type CONTENT_TYPE =
   | 'codeOfServicePage'
   | 'freeHelpPage'
   | 'inspectionPage'
+  | 'internalServicePage'
   | 'paymentConditionsPage'
   | 'warrantyPage';
 
