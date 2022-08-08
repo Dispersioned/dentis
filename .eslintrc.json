@@ -83,6 +83,8 @@
     "react/jsx-props-no-spreading": "warn",
     // Sometimes works bad with prettier printWidth
     "implicit-arrow-linebreak": "off",
+    // breaks rich text renderer
+    "react/no-unstable-nested-components": "off",
 
     // Can't be resolved with eslint-config-airbnb
     "react/jsx-curly-newline": "off",
