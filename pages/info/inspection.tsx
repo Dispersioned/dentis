@@ -1,10 +1,7 @@
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS } from '@contentful/rich-text-types';
-import { Typography } from '@mui/material';
 import type { GetStaticProps, NextPage } from 'next';
 
 import { PageTitle } from '../../components/page-title';
-import { IInspectionPage, IInspectionPageFields } from '../../contentful';
+import { IInspectionPage } from '../../contentful';
 import { client } from '../../contentful/client';
 import { renderRichText } from '../../utility/renderRichText';
 
