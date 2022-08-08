@@ -28,22 +28,24 @@ const Page: NextPage<Props> = ({ data }: Props) => {
     <div>
       <PageTitle text={data.fields.title} />
       {renderRichText(data.fields.content)}
-      <ImageList cols={imagesPerRow} gap={20}>
-        {data.fields.images!.map((image) => (
-          <FullscreenViewer withPointer key={image.sys.id}>
-            <ImageListItem style={{ minWidth: 280 }}>
-              {/* <span>text</span> */}
-              <Image
-                key={image.sys.updatedAt}
-                src={`http:${image.fields.file.url}`}
-                // layout="responsive"
-                width={image.fields.file.details.image.width}
-                height={image.fields.file.details.image.height}
-              />
-            </ImageListItem>
-          </FullscreenViewer>
-        ))}
-      </ImageList>
+      {data.fields.images && (
+        <ImageList cols={imagesPerRow} gap={20}>
+          {data.fields.images.map((image) => (
+            <FullscreenViewer withPointer key={image.sys.id}>
+              <ImageListItem style={{ minWidth: 280 }}>
+                {/* <span>text</span> */}
+                <Image
+                  key={image.sys.updatedAt}
+                  src={`http:${image.fields.file.url}`}
+                  // layout="responsive"
+                  width={image.fields.file.details.image!.width}
+                  height={image.fields.file.details.image!.height}
+                />
+              </ImageListItem>
+            </FullscreenViewer>
+          ))}
+        </ImageList>
+      )}
     </div>
   );
 };
