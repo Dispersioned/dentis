@@ -29,6 +29,33 @@ export interface ICodeOfServicePage extends Entry<ICodeOfServicePageFields> {
   };
 }
 
+export interface IFreeHelpPageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Содержание */
+  content: Document;
+}
+
+/** Страница */
+
+export interface IFreeHelpPage extends Entry<IFreeHelpPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'freeHelpPage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IInspectionPageFields {
   /** Заголовок */
   title: string;
@@ -83,7 +110,7 @@ export interface IPaymentConditionsPage extends Entry<IPaymentConditionsPageFiel
   };
 }
 
-export type CONTENT_TYPE = 'codeOfServicePage' | 'inspectionPage' | 'paymentConditionsPage';
+export type CONTENT_TYPE = 'codeOfServicePage' | 'freeHelpPage' | 'inspectionPage' | 'paymentConditionsPage';
 
 export type LOCALE_CODE = 'en-US';
 
