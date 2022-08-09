@@ -29,7 +29,7 @@ const Page: NextPage<Props> = ({ data }: Props) => {
       <PageTitle text={data.fields.title} />
       {renderRichText(data.fields.content)}
       {data.fields.images && (
-        <ImageList cols={imagesPerRow} gap={20}>
+        <ImageList cols={imagesPerRow} gap={20} style={{ marginTop: 20 }}>
           {data.fields.images.map((image) => (
             <FullscreenViewer withPointer key={image.sys.id}>
               <ImageListItem style={{ minWidth: 280 }}>
