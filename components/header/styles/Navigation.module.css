@@ -1,6 +1,6 @@
 .navlink {
-  --var-theme-primary-dark: #146d63;
-  --var-theme-primary-main: #115d54;
+  --var-theme-primary-main: #146d63;
+  --var-theme-primary-dark: #115d54;
 
   position: relative;
   text-decoration: none;

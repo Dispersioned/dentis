@@ -1,12 +1,12 @@
 import type { GetStaticProps, NextPage } from 'next';
 
 import { PageTitle } from '../../components/page-title';
-import { IPaymentConditionsPage, IPaymentConditionsPageFields } from '../../contentful';
+import { ICodeOfServicePage, ICodeOfServicePageFields } from '../../contentful';
 import { client } from '../../contentful/client';
 import { renderRichText } from '../../utility/renderRichText';
 
 type Props = {
-  data: IPaymentConditionsPage;
+  data: ICodeOfServicePage;
 };
 
 const Page: NextPage<Props> = ({ data }: Props) => {
@@ -19,7 +19,7 @@ const Page: NextPage<Props> = ({ data }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = await client.getEntries<IPaymentConditionsPageFields>({ content_type: 'paymentConditionsPage' });
+  const page = await client.getEntries<ICodeOfServicePageFields>({ content_type: 'codeOfServicePage' });
 
   const [data] = page.items;
   return {

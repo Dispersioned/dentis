@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import { useIsMobile } from '../../../hooks/useWindowWidth';
+import { useWindowWidth } from '../../../hooks/useWindowWidth';
 import { Buttons, ContactBtn, Content, MobileNavigation, Wrapper } from '../styles/Header';
 import { Burger } from './Burger';
 import { ContactForm } from './ContactForm';
@@ -15,7 +15,7 @@ export const Header = () => {
   }, [isActive]);
 
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const isMobile = useIsMobile();
+  const width = useWindowWidth();
 
   return (
     <Wrapper position="sticky">
@@ -24,12 +24,18 @@ export const Header = () => {
           <Link href="/">
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a style={{ display: 'flex' }}>
-              <Image src="/logo.svg" style={{ zIndex: 1000 }} width={180} height={55} />
+              <Image
+                src="/logo.svg"
+                style={{ zIndex: 1000 }}
+                width={180}
+                height={55}
+                onClick={() => setIsActive(false)}
+              />
             </a>
           </Link>
-          {!isMobile ? (
+          {width && width > 1400 ? (
             <>
-              <Navigation />
+              <Navigation onClose={() => setIsActive(false)} />
               <Buttons>
                 <ContactBtn variant="text" href="tel:+79385058423">
                   +7 (938) 505 84 23
@@ -43,7 +49,7 @@ export const Header = () => {
             <>
               <Burger active={isActive} onClick={() => setIsActive(!isActive)} />
               <MobileNavigation active={isActive}>
-                <Navigation />
+                <Navigation onClose={() => setIsActive(false)} />
                 <Buttons>
                   <ContactBtn onClick={() => setIsFormOpen(true)} variant="contained">
                     Записаться
