@@ -14,7 +14,6 @@ type Props = {
 };
 
 const Page: NextPage<Props> = ({ data }: Props) => {
-  console.log(data);
   const width = useWindowWidth();
   let imagesPerRow = 3;
 
