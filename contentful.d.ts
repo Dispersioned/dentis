@@ -194,6 +194,33 @@ export interface IPaymentConditionsPage extends Entry<IPaymentConditionsPageFiel
   };
 }
 
+export interface IPricesPageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Прайс */
+  pricelist: Document;
+}
+
+/** Страница */
+
+export interface IPricesPage extends Entry<IPricesPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'pricesPage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IWarrantyPageFields {
   /** Заголовок */
   title: string;
@@ -229,6 +256,7 @@ export type CONTENT_TYPE =
   | 'internalServicePage'
   | 'licensePage'
   | 'paymentConditionsPage'
+  | 'pricesPage'
   | 'warrantyPage';
 
 export type LOCALE_CODE = 'en-US';
