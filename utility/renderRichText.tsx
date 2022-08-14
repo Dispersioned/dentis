@@ -41,9 +41,11 @@ export const renderRichText = (data: Document) => {
         </Typography>
       ),
       [BLOCKS.TABLE]: (node, children) => (
-        <Table>
-          <TableBody>{children}</TableBody>
-        </Table>
+        <div style={{ overflowX: 'auto' }}>
+          <Table>
+            <TableBody>{children}</TableBody>
+          </Table>
+        </div>
       ),
       [BLOCKS.TABLE_ROW]: (node, children) => <TableRow>{children}</TableRow>,
       [BLOCKS.TABLE_HEADER_CELL]: (node, children) => <TableCell>{children}</TableCell>,
