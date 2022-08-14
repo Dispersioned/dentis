@@ -26,9 +26,5 @@ const Text = styled(Typography)`
 `;
 
 export const PageTitle = ({ text }: PageTitleProps) => {
-  return (
-    <Text component="h1" variant="h2">
-      {text}
-    </Text>
-  );
+  return <Text variant="h1">{text}</Text>;
 };
