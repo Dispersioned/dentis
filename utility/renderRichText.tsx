@@ -62,6 +62,8 @@ export const renderRichText = (data: Document) => {
           {children}
         </Link>
       ),
+      [BLOCKS.UL_LIST]: (node, children) => <ul style={{ marginLeft: 20 }}>{children}</ul>,
+      [BLOCKS.OL_LIST]: (node, children) => <ol style={{ marginLeft: 20 }}>{children}</ol>,
     },
     renderText: (text) => {
       return text.split('\n').reduce((children: RichText, textSegment: string, index: number) => {
