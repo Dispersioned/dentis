@@ -83,6 +83,33 @@ export interface IFreeHelpPage extends Entry<IFreeHelpPageFields> {
   };
 }
 
+export interface IGalleryPageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Изображения */
+  images: Asset[];
+}
+
+/** Страница */
+
+export interface IGalleryPage extends Entry<IGalleryPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'galleryPage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IInspectionPageFields {
   /** Заголовок */
   title: string;
@@ -252,6 +279,7 @@ export type CONTENT_TYPE =
   | 'codeOfServicePage'
   | 'dmsPage'
   | 'freeHelpPage'
+  | 'galleryPage'
   | 'inspectionPage'
   | 'internalServicePage'
   | 'licensePage'

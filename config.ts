@@ -25,5 +25,5 @@ export const ROUTES: Route[] = [
     ],
   },
   // { text: 'Акции', to: 'offers' },
-  { text: 'Фотогалерея', to: 'photos' },
+  { text: 'Фотогалерея', to: 'gallery' },
 ];

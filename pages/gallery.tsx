@@ -2,19 +2,19 @@ import { ImageList, ImageListItem } from '@mui/material';
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 
-import { FullscreenViewer } from '../../components/fullscreen-viewer';
-import { PageTitle } from '../../components/page-title';
-import { ILicensePage, ILicensePageFields } from '../../contentful';
-import { client } from '../../contentful/client';
-import { useWindowWidth } from '../../hooks/useWindowWidth';
-import { renderRichText } from '../../utility/renderRichText';
+import { FullscreenViewer } from '../components/fullscreen-viewer';
+import { PageTitle } from '../components/page-title';
+import { IGalleryPage, IGalleryPageFields } from '../contentful';
+import { client } from '../contentful/client';
+import { useWindowWidth } from '../hooks/useWindowWidth';
 
 type Props = {
-  data: ILicensePage;
+  data: IGalleryPage;
 };
 
 const Page: NextPage<Props> = ({ data }: Props) => {
   const width = useWindowWidth();
+
   let imagesPerRow = 3;
 
   if (width) {
@@ -23,10 +23,11 @@ const Page: NextPage<Props> = ({ data }: Props) => {
     else imagesPerRow = 1;
   }
 
+  console.log(data);
+
   return (
     <div>
       <PageTitle text={data.fields.title} />
-      {renderRichText(data.fields.content)}
       {data.fields.images && (
         <ImageList cols={imagesPerRow} gap={20} style={{ marginTop: 20 }}>
           {data.fields.images.map((image) => (
@@ -48,7 +49,7 @@ const Page: NextPage<Props> = ({ data }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const page = await client.getEntries<ILicensePageFields>({ content_type: 'licensePage' });
+  const page = await client.getEntries<IGalleryPageFields>({ content_type: 'galleryPage' });
 
   const [data] = page.items;
   return {
