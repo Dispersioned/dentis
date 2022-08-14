@@ -1,12 +1,13 @@
 import { Document } from '@contentful/rich-text-types';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { Accordion, Button } from '@mui/material';
+import { Accordion, Button, Table, TableBody, TableCell, TableRow, Typography } from '@mui/material';
 import type { GetStaticProps, NextPage } from 'next';
 import { useRef } from 'react';
 
 import { PageTitle } from '../components/page-title';
 import { IPricesPage, IPricesPageFields } from '../contentful';
 import { client } from '../contentful/client';
+import { useWindowWidth } from '../hooks/useWindowWidth';
 import { Details, Heading, Summary } from '../styles/info/prices';
 import { renderPriceTab } from '../utility/renderPriceTab';
 
@@ -27,6 +28,8 @@ const Page: NextPage<Props> = ({ data }: Props) => {
       .forEach((node) => (node as HTMLElement).click());
   };
 
+  const width = useWindowWidth();
+
   return (
     <div ref={rootRef}>
       <PageTitle text={data.fields.title} />
@@ -43,7 +46,34 @@ const Page: NextPage<Props> = ({ data }: Props) => {
               // @ts-ignore */}
                 <Heading variant="h5">{headingNode.content[0].value}</Heading>
               </Summary>
-              <Details>{renderPriceTab(tabTableNodes[i] as unknown as Document)}</Details>
+              <Details>
+                {width && width > 550 ? (
+                  renderPriceTab(tabTableNodes[i] as unknown as Document)
+                ) : (
+                  <Table>
+                    <TableBody>
+                      {(() => {
+                        const rows = (tabTableNodes[i] as any).content;
+                        const tableHeads = rows[0].content.map((cell: any) => cell.content[0].content[0].value);
+                        return rows.slice(1).map((row: any) => {
+                          return (
+                            <TableRow key={Math.random()}>
+                              <TableCell>
+                                {row.content.map((cell: any, index: number) => (
+                                  // eslint-disable-next-line react/no-array-index-key
+                                  <Typography key={index}>
+                                    <b>{tableHeads[index]}</b> {cell.content[0].content[0].value}
+                                  </Typography>
+                                ))}
+                              </TableCell>
+                            </TableRow>
+                          );
+                        });
+                      })()}
+                    </TableBody>
+                  </Table>
+                )}
+              </Details>
             </Accordion>
           ))}
         </>
