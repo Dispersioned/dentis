@@ -14,6 +14,7 @@ type NavigationProps = {
 export const Navigation = ({ onClose }: NavigationProps) => {
   const router = useRouter();
   const isActiveLink = (link: string) => router.asPath.includes(link);
+  const shouldClose = (link: string) => router.asPath.endsWith(link);
 
   return (
     <nav>
@@ -23,7 +24,7 @@ export const Navigation = ({ onClose }: NavigationProps) => {
             <Link href={`/${data.to}`}>
               <MUILink
                 onClick={() => {
-                  if (!isActiveLink(data.to)) onClose();
+                  if (!shouldClose(data.to)) onClose();
                 }}
                 style={{ cursor: 'pointer' }}
                 className={isActiveLink(data.to) ? `${s.navlink} ${s.active}` : s.navlink}
