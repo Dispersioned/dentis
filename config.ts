@@ -19,7 +19,7 @@ export const ROUTES: Route[] = [
       { text: 'Бесплатная помощь', to: 'free-help' },
       { text: 'Гарантии', to: 'warranty' },
       { text: 'Внутренний распорядок', to: 'internal-service' },
-      { text: 'Полис ДМС', to: 'dms' },
+      // { text: 'Полис ДМС', to: 'dms' },
       { text: 'Лицензии', to: 'license' },
       // { text: 'Вакансии', to: 'career' },
     ],
