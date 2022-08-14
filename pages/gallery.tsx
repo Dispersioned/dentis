@@ -14,7 +14,6 @@ type Props = {
 
 const Page: NextPage<Props> = ({ data }: Props) => {
   const width = useWindowWidth();
-
   let imagesPerRow = 3;
 
   if (width) {
@@ -22,8 +21,6 @@ const Page: NextPage<Props> = ({ data }: Props) => {
     else if (width >= 480) imagesPerRow = 2;
     else imagesPerRow = 1;
   }
-
-  console.log(data);
 
   return (
     <div>
