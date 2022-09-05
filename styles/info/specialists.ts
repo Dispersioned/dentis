@@ -1,4 +1,4 @@
-import { styled } from '@mui/material';
+import { Typography, styled } from '@mui/material';
 
 export const Doctors = styled('div')`
   display: grid;
@@ -19,4 +19,8 @@ export const ImageContainer = styled('div')`
   position: relative;
   border-radius: 3px;
   overflow: hidden;
+`;
+
+export const DoctorName = styled(Typography)`
+  cursor: pointer;
 `;
