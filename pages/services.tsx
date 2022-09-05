@@ -1,4 +1,3 @@
-import { Button, Typography } from '@mui/material';
 import type { GetStaticProps, NextPage } from 'next';
 
 import { PageTitle } from '../components/page-title';
