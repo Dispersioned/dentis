@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 
 import { PageTitle } from '../../components/page-title';
-import { ROUTES } from '../../config';
+import { ROUTES } from '../../routes';
 import { MenuItem, MenuLayout } from '../../styles/info/styles';
 
 const Page: NextPage = () => {
