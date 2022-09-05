@@ -56,6 +56,40 @@ export interface IDmsPage extends Entry<IDmsPageFields> {
   };
 }
 
+export interface IDoctorFields {
+  /** Фотография */
+  photo: Asset;
+
+  /** ФИО */
+  name: string;
+
+  /** Специализация */
+  specialization: string;
+
+  /** Биография */
+  bio: Document;
+
+  /** Сертификаты */
+  certificates?: Asset[] | undefined;
+}
+
+export interface IDoctor extends Entry<IDoctorFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'doctor';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IFreeHelpPageFields {
   /** Заголовок */
   title: string;
@@ -248,6 +282,33 @@ export interface IPricesPage extends Entry<IPricesPageFields> {
   };
 }
 
+export interface ISpecialistsPageFields {
+  /** Заголовок */
+  title: string;
+
+  /** Врачи */
+  doctors: Entry<{ [fieldId: string]: unknown }>[];
+}
+
+/** Страница */
+
+export interface ISpecialistsPage extends Entry<ISpecialistsPageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'specialistsPage';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IWarrantyPageFields {
   /** Заголовок */
   title: string;
@@ -278,6 +339,7 @@ export interface IWarrantyPage extends Entry<IWarrantyPageFields> {
 export type CONTENT_TYPE =
   | 'codeOfServicePage'
   | 'dmsPage'
+  | 'doctor'
   | 'freeHelpPage'
   | 'galleryPage'
   | 'inspectionPage'
@@ -285,6 +347,7 @@ export type CONTENT_TYPE =
   | 'licensePage'
   | 'paymentConditionsPage'
   | 'pricesPage'
+  | 'specialistsPage'
   | 'warrantyPage';
 
 export type LOCALE_CODE = 'en-US';

@@ -4,10 +4,11 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { CrumbLink, createCrumbsLinks } from '../../utility/createCrumbsLinks';
+import { isContentfulId } from '../../utility/isContentfulId';
 
 export const Breadcrumbs = () => {
   const router = useRouter();
-  const crumbs = router.asPath.split('/').filter((crumb) => crumb !== '');
+  const crumbs = router.asPath.split('/').filter((crumb) => crumb !== '' && !isContentfulId(crumb));
   const links = createCrumbsLinks(crumbs);
 
   if (crumbs.length < 2) return <div />;
