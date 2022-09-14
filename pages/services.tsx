@@ -1,8 +1,10 @@
 import type { GetStaticProps, NextPage } from 'next';
+import Link from 'next/link';
 
 import { PageTitle } from '../components/page-title';
 import { IPricesPage, IPricesPageFields } from '../contentful';
 import { client } from '../contentful/client';
+import { ROUTES } from '../routes';
 import { ContentLayout, ServiceBtn } from '../styles/services';
 
 type Props = {
@@ -20,9 +22,15 @@ const Page: NextPage<Props> = ({ data }: Props) => {
         {tabHeadingNodes.map((node) => {
           const text = (node.content[0] as { value: string }).value;
           return (
-            <ServiceBtn key={text} variant="contained">
-              {text}
-            </ServiceBtn>
+            <Link
+              key={text}
+              href={{
+                pathname: 'prices',
+                query: { open: text },
+              }}
+            >
+              <ServiceBtn variant="contained">{text}</ServiceBtn>
+            </Link>
           );
         })}
       </ContentLayout>

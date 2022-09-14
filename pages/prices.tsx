@@ -2,7 +2,8 @@ import { Document } from '@contentful/rich-text-types';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, Button, Table, TableBody, TableCell, TableRow, Typography } from '@mui/material';
 import type { GetStaticProps, NextPage } from 'next';
-import { useRef } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 
 import { PageTitle } from '../components/page-title';
 import { IPricesPage, IPricesPageFields } from '../contentful';
@@ -29,6 +30,12 @@ const Page: NextPage<Props> = ({ data }: Props) => {
   };
 
   const width = useWindowWidth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.query.open) return;
+    window.history.replaceState(null, '', '/prices');
+  }, []);
 
   return (
     <div ref={rootRef}>
@@ -38,44 +45,49 @@ const Page: NextPage<Props> = ({ data }: Props) => {
           <Button style={{ margin: '0.5rem 0' }} onClick={handleOpenAll}>
             Раскрыть все
           </Button>
-          {tabHeadingNodes.map((headingNode, i) => (
-            <Accordion className="accordion-click-area" key={Math.random()}>
-              <Summary expandIcon={<ExpandMoreIcon style={{ color: '#fff' }} />}>
-                {/* i know better
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment 
-              // @ts-ignore */}
-                <Heading variant="h5">{headingNode.content[0].value}</Heading>
-              </Summary>
-              <Details>
-                {width && width > 550 ? (
-                  renderPriceTab(tabTableNodes[i] as unknown as Document)
-                ) : (
-                  <Table>
-                    <TableBody>
-                      {(() => {
-                        const rows = (tabTableNodes[i] as any).content;
-                        const tableHeads = rows[0].content.map((cell: any) => cell.content[0].content[0].value);
-                        return rows.slice(1).map((row: any) => {
-                          return (
-                            <TableRow key={Math.random()}>
-                              <TableCell>
-                                {row.content.map((cell: any, index: number) => (
-                                  // eslint-disable-next-line react/no-array-index-key
-                                  <Typography key={index}>
-                                    <b>{tableHeads[index]}</b> {cell.content[0].content[0].value}
-                                  </Typography>
-                                ))}
-                              </TableCell>
-                            </TableRow>
-                          );
-                        });
-                      })()}
-                    </TableBody>
-                  </Table>
-                )}
-              </Details>
-            </Accordion>
-          ))}
+          {tabHeadingNodes.map((headingNode, i) => {
+            const title = (headingNode.content[0] as any).value;
+            const isActive = !!(
+              router.query.open && (router.query.open as string).toLowerCase() === title.toLowerCase()
+            );
+            return (
+              <Accordion className="accordion-click-area" key={Math.random()} defaultExpanded={isActive}>
+                <Summary expandIcon={<ExpandMoreIcon style={{ color: '#fff' }} />}>
+                  <Heading className="accordion-title" variant="h5">
+                    {title}
+                  </Heading>
+                </Summary>
+                <Details>
+                  {width && width > 550 ? (
+                    renderPriceTab(tabTableNodes[i] as unknown as Document)
+                  ) : (
+                    <Table>
+                      <TableBody>
+                        {(() => {
+                          const rows = (tabTableNodes[i] as any).content;
+                          const tableHeads = rows[0].content.map((cell: any) => cell.content[0].content[0].value);
+                          return rows.slice(1).map((row: any) => {
+                            return (
+                              <TableRow key={Math.random()}>
+                                <TableCell>
+                                  {row.content.map((cell: any, index: number) => (
+                                    // eslint-disable-next-line react/no-array-index-key
+                                    <Typography key={index}>
+                                      <b>{tableHeads[index]}</b> {cell.content[0].content[0].value}
+                                    </Typography>
+                                  ))}
+                                </TableCell>
+                              </TableRow>
+                            );
+                          });
+                        })()}
+                      </TableBody>
+                    </Table>
+                  )}
+                </Details>
+              </Accordion>
+            );
+          })}
         </>
       )}
     </div>
