@@ -7,7 +7,7 @@ import { PageTitle } from '../../components/page-title';
 import { IDoctor, IDoctorFields } from '../../contentful';
 import { client } from '../../contentful/client';
 import { useWindowWidth } from '../../hooks/useWindowWidth';
-import { Certificates, ContentLayout, DoctorInfo, ImageContainer } from '../../styles/info/specialist';
+import { Certificates, DoctorInfo, ImageContainer } from '../../styles/info/specialist';
 import { renderRichText } from '../../utility/renderRichText';
 
 type Props = {

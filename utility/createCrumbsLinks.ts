@@ -1,4 +1,4 @@
-import { ROUTES } from '../config';
+import { ROUTES } from '../routes';
 
 function fluttenRoutes(routes: typeof ROUTES) {
   const flatRoutes = new Map();
