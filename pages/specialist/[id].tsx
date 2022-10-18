@@ -38,7 +38,7 @@ const Page: NextPage<Props> = ({ doctor }: Props) => {
           <Image
             src={'https:' + doctor.photo.fields.file.url}
             layout="fill"
-            objectFit={width > 991 ? 'cover' : 'contain'}
+            objectFit={width && width > 991 ? 'cover' : 'contain'}
             width={doctor.photo.fields.file.details.image?.width}
             height="100%"
           />
