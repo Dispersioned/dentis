@@ -35,7 +35,13 @@ const Page: NextPage<Props> = ({ doctor }: Props) => {
           {renderRichText(doctor.bio)}
         </div>
         <ImageContainer>
-          <Image src={'https:' + doctor.photo.fields.file.url} layout="fill" objectFit="cover" />
+          <Image
+            src={'https:' + doctor.photo.fields.file.url}
+            layout="fill"
+            objectFit={width > 991 ? 'cover' : 'contain'}
+            width={doctor.photo.fields.file.details.image?.width}
+            height="100%"
+          />
         </ImageContainer>
       </DoctorInfo>
       <Certificates>
