@@ -62,9 +62,9 @@ export const Header = () => {
               </MobileNavigation>
             </>
           )}
-          <ContactForm open={isFormOpen} handleClose={() => setIsFormOpen(false)} />
         </Content>
       </header>
+      <ContactForm open={isFormOpen} handleClose={() => setIsFormOpen(false)} />
     </Wrapper>
   );
 };
