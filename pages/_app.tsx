@@ -3,11 +3,14 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
-import * as React from 'react';
+import React, { useEffect } from 'react';
 
 import { Layout } from '../components/layout';
+import '../lib/userHelperLibrary/styles.css';
+import userhelperlibrary from '../lib/userHelperLibrary/userHelperLibrary';
 import '../styles/reset.css';
 import { theme } from '../styles/theme/theme';
 import { createEmotionCache } from '../utility/createEmotionCache';
@@ -20,6 +23,10 @@ const clientSideEmotionCache = createEmotionCache();
 
 const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
+  useEffect(() => {
+    userhelperlibrary();
+  }, []);
 
   return (
     <CacheProvider value={emotionCache}>
