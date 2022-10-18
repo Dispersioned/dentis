@@ -26,6 +26,7 @@ export const Header = () => {
             <a style={{ display: 'flex' }}>
               <Image
                 src="/logo.svg"
+                alt="logo"
                 style={{ zIndex: 1000 }}
                 width={180}
                 height={55}
