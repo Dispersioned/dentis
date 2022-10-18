@@ -8,9 +8,19 @@ export const Doctors = styled('div')`
 `;
 
 export const DoctorCard = styled('div')`
-  display: flex;
+  display: grid;
   grid-template-columns: 1fr 2fr;
   overflow: hidden;
+
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr 1.5fr;
+  }
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ImageContainer = styled('div')`

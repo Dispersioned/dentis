@@ -9,7 +9,6 @@ import { Header } from '../header';
 type LayoutProps = React.PropsWithChildren;
 export const Layout = ({ children }: LayoutProps) => {
   const router = useRouter();
-  console.log(router);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
