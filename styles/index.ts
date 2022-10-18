@@ -4,7 +4,7 @@ export const PageLayout = styled('div')`
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   overflow: hidden;
 
