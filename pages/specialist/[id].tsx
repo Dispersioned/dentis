@@ -45,7 +45,7 @@ const Page: NextPage<Props> = ({ doctor }: Props) => {
         </ImageContainer>
       </DoctorInfo>
       <Certificates>
-        <Typography variant="h3" textAlign="center">
+        <Typography variant="h4" textAlign="center">
           Сертификаты врача:
         </Typography>
         {doctor.certificates && (
