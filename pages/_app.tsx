@@ -25,7 +25,7 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   useEffect(() => {
-    userhelperlibrary();
+    userhelperlibrary({ destroy: false, lang: 'ru' });
   }, []);
 
   return (
