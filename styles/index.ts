@@ -1,39 +1,43 @@
 import { styled } from '@mui/material';
 
-export const Content = styled('div', { shouldForwardProp: (p) => p !== 'bgImage' })<{ bgImage: string }>`
+export const PageLayout = styled('div')`
   position: absolute;
   left: 0;
   top: 0;
-  padding-top: 35px;
   width: 100%;
-  height: 100%;
-  background: url(${(props) => props.bgImage}) center center;
-  background-size: cover;
+  min-height: 100vh;
+  overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    opacity: 0.1;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
+  @media (max-width: 1023px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
   }
 `;
 
-export const Text = styled('div')`
-  position: relative;
-  left: -2px;
-  margin-top: 15vw;
-  padding: 15px 25px 15px 15px;
-  backdrop-filter: blur(1px);
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.9);
-
-  p {
-    font-size: 20px;
-    color: #0a1c1a;
+export const Content = styled('div')`
+  padding: calc(80px + 3vw) 20px 30px 20px;
+  @media (max-width: 767px) {
+    padding-top: 5px;
   }
-  max-width: max(900px, 40%);
+`;
+
+export const SideImage = styled('div')`
+  display: flex;
+  height: 100%;
+  @media (max-width: 767px) {
+    height: 290px;
+    grid-row: 1;
+    margin-top: 70px;
+  }
+  @media (max-width: 575px) {
+    height: 250px;
+  }
+  @media (max-width: 479px) {
+    height: 200px;
+  }
 `;

@@ -1,9 +1,10 @@
 import type { GetStaticProps, NextPage } from 'next';
+import Image from 'next/image';
 
 import { PageTitle } from '../components/page-title';
 import { IHomePage } from '../contentful';
 import { client } from '../contentful/client';
-import { Content, Text } from '../styles';
+import { Content, PageLayout, SideImage } from '../styles';
 import { renderRichText } from '../utility/renderRichText';
 
 type Props = {
@@ -11,10 +12,23 @@ type Props = {
 };
 
 const Page: NextPage<Props> = ({ data }: Props) => {
+  const image = data.fields.backgroundImage;
+
   return (
-    <Content bgImage={data.fields.backgroundImage.fields.file.url}>
-      <Text>{renderRichText(data.fields.content)}</Text>
-    </Content>
+    <PageLayout>
+      <Content>
+        <PageTitle text="Дентис" />
+        <div>{renderRichText(data.fields.content)}</div>
+      </Content>
+      <SideImage>
+        <Image
+          src={`http:${image.fields.file.url}`}
+          objectFit="cover"
+          width={image.fields.file.details.image!.width}
+          height="100%"
+        />
+      </SideImage>
+    </PageLayout>
   );
 };
 
