@@ -144,6 +144,36 @@ export interface IGalleryPage extends Entry<IGalleryPageFields> {
   };
 }
 
+export interface IHomePageFields {
+  /** Фоновая картинка */
+  backgroundImage: Asset;
+
+  /** Заголовок */
+  title: string;
+
+  /** Содержание */
+  content: Document;
+}
+
+/** Страница */
+
+export interface IHomePage extends Entry<IHomePageFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: 'home-page';
+        linkType: 'ContentType';
+        type: 'Link';
+      };
+    };
+  };
+}
+
 export interface IInspectionPageFields {
   /** Заголовок */
   title: string;
@@ -342,6 +372,7 @@ export type CONTENT_TYPE =
   | 'doctor'
   | 'freeHelpPage'
   | 'galleryPage'
+  | 'home-page'
   | 'inspectionPage'
   | 'internalServicePage'
   | 'licensePage'

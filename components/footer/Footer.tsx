@@ -1,10 +1,15 @@
 import { Typography } from '@mui/material';
-import React from 'react';
 
-export const Footer = () => (
-  <footer style={{ marginTop: 'auto', padding: '1rem' }}>
-    <Typography fontSize={15} textAlign="center">
-      © ДЕНТиС 2022
-    </Typography>
-  </footer>
-);
+type FooterProps = {
+  disable?: boolean;
+};
+
+export const Footer = ({ disable = false }: FooterProps) => {
+  return (
+    <footer style={{ marginTop: 'auto', padding: '1rem', display: disable ? 'none' : 'unset' }}>
+      <Typography fontSize={15} textAlign="center">
+        © ДЕНТиС 2022
+      </Typography>
+    </footer>
+  );
+};

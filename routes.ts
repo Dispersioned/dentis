@@ -5,7 +5,7 @@ export type Route = {
 };
 
 export const ROUTES: Route[] = [
-  { text: 'О нас', to: 'about-us' },
+  // { text: 'О нас', to: 'about-us' },
   { text: 'Врачи', to: 'specialists' },
   { text: 'Услуги', to: 'services' },
   { text: 'Цены', to: 'prices' },
