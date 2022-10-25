@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -15,14 +16,17 @@ type FormValues = {
 
 export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
   const {
-    control,
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = () => {
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    fetch('/api/mail', {
+      method: 'post',
+      body: JSON.stringify(data),
+    });
     handleClose();
     reset();
   };
@@ -72,7 +76,7 @@ export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
             })}
           />
           <DialogActions>
-            <SubmitBtn onClick={() => console.log(errors)} type="submit" variant="contained">
+            <SubmitBtn type="submit" variant="contained">
               Отправить
             </SubmitBtn>
           </DialogActions>
