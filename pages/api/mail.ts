@@ -25,8 +25,12 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       text: `Номер телефона: ${body.phone} имя: ${body.name}`,
       html: `<h1>Номер телефона: ${body.phone} имя: ${body.name}</h1>`,
     })
-    .then((msg) => console.log('msg', msg))
-    .catch((err) => console.error(err));
-
-  res.status(200).json({ name: 'John Doe' });
+    .then((msg) => {
+      console.log('msg', msg);
+      res.status(200).json({ status: 'done' });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ status: 'failed' });
+    });
 };

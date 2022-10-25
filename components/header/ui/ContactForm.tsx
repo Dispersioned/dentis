@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { SubmitBtn } from '../styles/Header';
+import { ActionsWrapper, SubmitBtn } from '../styles/Header';
 
 type ContactFormProps = {
   open: boolean;
@@ -22,14 +23,27 @@ export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
     formState: { errors },
   } = useForm<FormValues>();
 
+  const [status, setStatus] = useState(200);
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     fetch('/api/mail', {
       method: 'post',
       body: JSON.stringify(data),
+    }).then((res) => {
+      setStatus(res.status);
     });
-    handleClose();
-    reset();
+    setTimeout(() => {
+      setStatus(0);
+      handleClose();
+      reset();
+    }, 5000);
   };
+
+  useEffect(() => {
+    return () => {
+      setStatus(0);
+    };
+  }, []);
 
   return (
     <Dialog
@@ -39,7 +53,14 @@ export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
         reset();
       }}
     >
-      <DialogTitle variant="h4">Записаться на прием</DialogTitle>
+      <DialogTitle variant="h4">
+        {(() => {
+          if (status === 0) return 'Записаться на прием';
+          if (status === 200) return 'Отправлено, ожидайте звонка';
+          return 'Произошла ошибка';
+        })()}
+      </DialogTitle>
+
       <DialogContent>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField
