@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { ActionsWrapper, SubmitBtn } from '../styles/Header';
+import { SubmitBtn } from '../styles/Header';
 
 type ContactFormProps = {
   open: boolean;
