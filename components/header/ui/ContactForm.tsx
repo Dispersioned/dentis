@@ -23,7 +23,7 @@ export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const [status, setStatus] = useState(200);
+  const [status, setStatus] = useState(0);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     fetch('/api/mail', {
