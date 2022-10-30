@@ -14,11 +14,21 @@ export const Layout = ({ children }: LayoutProps) => {
   return (
     <Wrapper>
       <Header />
-      <Container maxWidth="lg" style={{ height: '100%' }}>
-        <Breadcrumbs />
-        {children}
-      </Container>
-      <Footer disable={router.route === '/'} />
+      {router.route === '/' ? (
+        <>
+          <Breadcrumbs />
+          {children}
+          <Footer />
+        </>
+      ) : (
+        <>
+          <Container maxWidth="lg" style={{ height: '100%' }}>
+            <Breadcrumbs />
+            {children}
+          </Container>
+          <Footer />
+        </>
+      )}
     </Wrapper>
   );
 };

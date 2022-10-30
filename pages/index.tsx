@@ -26,6 +26,7 @@ const Page: NextPage<Props> = ({ data }: Props) => {
           objectFit="cover"
           width={image.fields.file.details.image!.width}
           height="100%"
+          priority
         />
       </SideImage>
     </PageLayout>
