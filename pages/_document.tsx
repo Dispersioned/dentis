@@ -9,9 +9,28 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta charSet="UTF-8" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+
+          <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
+          <link rel="manifest" href="favicon/site.webmanifest" />
+          <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#1e682e" />
+          <meta name="msapplication-TileColor" content="#2d89ef" />
+          <meta name="msapplication-TileImage" content="favicon/mstile-144x144.png" />
+          <meta name="theme-color" content="#ffffff" />
+
+          <meta
+            name="description"
+            content="Стоматология  «ДЕНТиС» уже более 6 лет на рынке. Лечением занимаются профессионалы с обширным опытом. «ДЕНТиС» акцентирует свое внимание не только на качество используемых материалах, но также и на техническое оснащение. Дружба с «ДЕНТиС» - это всегда здоровые зубы и белоснежная улыбка!"
+          />
+          {/* enable only for final production */}
+          {/* <meta name="robots" content="index,follow" /> */}
         </Head>
         <body>
           <Main />
