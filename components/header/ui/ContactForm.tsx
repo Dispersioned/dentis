@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { FormTitle } from '../styles/ContactForm';
 import { SubmitBtn } from '../styles/Header';
 
 type ContactFormProps = {
@@ -23,14 +24,17 @@ export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
     formState: { errors },
   } = useForm<FormValues>();
 
+  const [isSending, setIsSending] = useState(false);
   const [status, setStatus] = useState(0);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
+    setIsSending(true);
     fetch('/api/mail', {
       method: 'post',
       body: JSON.stringify(data),
     }).then((res) => {
       setStatus(res.status);
+      setIsSending(false);
     });
     setTimeout(() => {
       setStatus(0);
@@ -42,6 +46,7 @@ export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
   useEffect(() => {
     return () => {
       setStatus(0);
+      setIsSending(false);
     };
   }, []);
 
@@ -53,13 +58,13 @@ export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
         reset();
       }}
     >
-      <DialogTitle variant="h4">
+      <FormTitle variant="h4">
         {(() => {
           if (status === 0) return 'Записаться на прием';
           if (status === 200) return 'Отправлено, ожидайте звонка';
           return 'Произошла ошибка';
         })()}
-      </DialogTitle>
+      </FormTitle>
 
       <DialogContent>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -97,7 +102,7 @@ export const ContactForm = ({ open, handleClose }: ContactFormProps) => {
             })}
           />
           <DialogActions>
-            <SubmitBtn type="submit" variant="contained">
+            <SubmitBtn disabled={isSending} type="submit" variant="contained">
               Отправить
             </SubmitBtn>
           </DialogActions>
