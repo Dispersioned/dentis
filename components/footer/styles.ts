@@ -14,4 +14,16 @@ export const Description = styled(Container)`
     'info address' auto
     'codes inspection' auto / auto auto;
   gap: 20px;
+
+  @media (max-width: 991px) {
+    gap: 15px;
+  }
+  @media (max-width: 767px) {
+    grid-template:
+      'title' auto
+      'info' auto
+      'address' auto
+      'codes' auto
+      'inspection' auto / auto;
+  }
 `;
