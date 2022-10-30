@@ -29,6 +29,7 @@ export default class MyDocument extends Document {
             name="description"
             content="Стоматология  «ДЕНТиС» уже более 6 лет на рынке. Лечением занимаются профессионалы с обширным опытом. «ДЕНТиС» акцентирует свое внимание не только на качество используемых материалах, но также и на техническое оснащение. Дружба с «ДЕНТиС» - это всегда здоровые зубы и белоснежная улыбка!"
           />
+          {/* enable only for final production */}
           {/* <meta name="robots" content="index,follow" /> */}
         </Head>
         <body>
