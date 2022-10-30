@@ -6,6 +6,7 @@ import '@fontsource/roboto/700.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 import React, { useEffect } from 'react';
 
 import { Layout } from '../components/layout';
@@ -32,6 +33,9 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Head>
+          <title>ДЕНТиС - стоматология в Ростове-на-Дону</title>
+        </Head>
         <Layout>
           <Component {...pageProps} />
         </Layout>

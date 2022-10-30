@@ -18,7 +18,8 @@ export const Layout = ({ children }: LayoutProps) => {
         <Breadcrumbs />
         {children}
       </Container>
-      <Footer disable={router.route === '/'} />
+      {/* <Footer disable={router.route === '/'} /> */}
+      <Footer />
     </Wrapper>
   );
 };
