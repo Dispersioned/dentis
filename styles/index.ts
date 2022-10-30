@@ -19,6 +19,7 @@ export const Content = styled('div')`
   @media (max-width: 991px) {
     padding-top: 5px;
   }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 `;
 
 export const SideImage = styled('div')`

@@ -8,6 +8,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
+import { YMaps } from 'react-yandex-maps';
 
 import { Layout } from '../components/layout';
 import '../lib/userHelperLibrary/styles.css';
@@ -32,13 +33,15 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Head>
-          <title>ДЕНТиС - стоматология в Ростове-на-Дону</title>
-        </Head>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <YMaps>
+          <CssBaseline />
+          <Head>
+            <title>ДЕНТиС - стоматология в Ростове-на-Дону</title>
+          </Head>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </YMaps>
       </ThemeProvider>
     </CacheProvider>
   );
