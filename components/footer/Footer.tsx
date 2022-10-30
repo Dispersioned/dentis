@@ -1,12 +1,8 @@
 import { Typography } from '@mui/material';
 
-type FooterProps = {
-  disable?: boolean;
-};
-
-export const Footer = ({ disable = false }: FooterProps) => {
+export const Footer = () => {
   return (
-    <footer style={{ marginTop: 'auto', padding: '1rem', display: disable ? 'none' : 'unset' }}>
+    <footer style={{ marginTop: 'auto', padding: '1rem' }}>
       <Typography fontSize={15} textAlign="center">
         © ДЕНТиС 2022
       </Typography>
